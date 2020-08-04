@@ -31,11 +31,15 @@ module.exports = {
     {
       resolve: `gatsby-plugin-page-creator`,
       options: {
-        path: `${__dirname}/src/pages/`,
-        //prefixes: [`/app/*`]
-        ignore: [`app`],
-        // See pattern syntax recognized by micromatch
-        // https://www.npmjs.com/package/micromatch#matching-features
+        path: `${__dirname}/src/pages`,
+        ignore: {
+          // Example: Ignore `file.example.js`, `dir/s/file.example.tsx`
+          patterns: [`**/app/*.*`],
+          // Example: Match both `file.example.js` and `file.EXAMPLE.js`
+          options: {nocase: true},
+          // See all available micromatch options
+          // https://www.npmjs.com/package/micromatch#optionsnocase
+        },
       },
     },
   ],
